@@ -22,7 +22,9 @@ Route::name('api.')->namespace('Api')->group(function () {
         });
 
         Route::middleware('check.api_auth')->group(function () {
-            Route::get('/home', 'HomeController@home')->name('home');
+            Route::prefix('/user')->group(function () {
+                Route::get('/profile', 'UserController@profile')->name('profile');
+            });
         });
     });
 });
