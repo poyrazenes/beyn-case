@@ -1,0 +1,72 @@
+swagger: "2.0"
+info:
+  description: "This is the first version mobile api documentation. You can find out more about Swagger at [http://swagger.io](http://swagger.io)."
+  version: "0.0.1"
+  title: "Beyn Case"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/api/mobile/v1"
+tags:
+  - name: "auth"
+    description: "Authentication operations"
+schemes:
+  - "http"
+paths:
+  /auth/login:
+    post:
+      tags:
+        - "auth"
+      summary: "Logs users into the system"
+      description: ""
+      operationId: "login"
+      consumes:
+        - "application/x-www-form-urlencoded"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "email"
+          in: "formData"
+          description: "User email"
+          required: true
+          type: "string"
+        - name: "password"
+          in: "formData"
+          description: "User password"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+        "401":
+          description: "Failed operation"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+definitions:
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      status:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        type: "object"
+      meta:
+        type: "object"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
+securityDefinitions:
+  JWT:
+    type: "apiKey"
+    in: "header"
+    name: "Authorization"
