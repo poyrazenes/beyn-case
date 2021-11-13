@@ -1,16 +1,7 @@
 <?php
 
-use App\Models\Allergy;
-use App\Models\Page;
-use App\Models\Config;
-use App\Models\Language;
-use App\Models\RemoteCategory;
-use App\Models\MeasurementUnit;
-use App\Models\NewsletterEmail;
-
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Cache;
 
 if (!function_exists('slug')) {
     function slug($str)

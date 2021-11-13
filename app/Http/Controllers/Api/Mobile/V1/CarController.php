@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Mobile\V1;
 
 use App\Services\Api\Mobile\V1\CarServiceContract;
+
 use Illuminate\Http\Request;
 
 class CarController extends BaseController

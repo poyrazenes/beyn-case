@@ -36,7 +36,7 @@ class BaseRequest extends FormRequest
             }
         }
 
-        $message = 'Unprocessable Entity!';
+        $message = 'Unprocessable Entity';
 
         $response = new Response(422, false, $message, $data);
 

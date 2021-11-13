@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Mobile\V1;
 
-use App\Http\Requests\Api\Mobile\V1\BalanceRequest;
 use App\Services\Api\Mobile\V1\UserServiceContract;
+use App\Http\Requests\Api\Mobile\V1\BalanceRequest;
 
 class UserController extends BaseController
 {

@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Car;
 use App\Services\Integration\CarServiceContract;
+
+use App\Models\Car;
+
 use Illuminate\Console\Command;
 
 class SyncCars extends Command

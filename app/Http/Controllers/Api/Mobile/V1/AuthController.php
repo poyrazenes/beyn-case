@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api\Mobile\V1;
 
-use App\Http\Requests\Api\Mobile\V1\Auth\LoginRequest;
 use App\Services\Api\Mobile\V1\AuthServiceContract;
+use App\Http\Requests\Api\Mobile\V1\Auth\LoginRequest;
 
 class AuthController extends BaseController
 {

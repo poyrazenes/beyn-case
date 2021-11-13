@@ -61,10 +61,10 @@ class Handler extends ExceptionHandler
             } elseif ($exception instanceof TooManyRequestsHttpException) {
                 $response->setCode(429)->setMessage('Too Many Request');
             } else {
-                $response->setCode(500)->setMessage('An Error Occur');
+                $response->setCode(500)->setMessage('Internal Server Error');
             }
 
-            return $response->setStatus(false)->setData($exception)->respond();
+            return $response->setStatus(false)->respond();
         }
 
         return parent::render($request, $exception);
