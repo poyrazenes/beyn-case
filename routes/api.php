@@ -26,6 +26,9 @@ Route::name('api.')->namespace('Api')->group(function () {
                 Route::get('/profile', 'UserController@profile')->name('profile');
                 Route::post('/update-balance', 'UserController@updateBalance')->name('update-balance');
             });
+
+            Route::apiResource('services', 'ServiceController')->only(['index']);
+
         });
     });
 });
