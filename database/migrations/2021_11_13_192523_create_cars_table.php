@@ -49,6 +49,7 @@ class CreateCarsTable extends Migration
             $table->string('dimensions_cd')->nullable();
             $table->string('weight_unlade')->nullable();
             $table->string('weight_limit')->nullable();
+            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

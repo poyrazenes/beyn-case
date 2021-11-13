@@ -4,13 +4,12 @@ namespace App\Services\Api\Mobile\V1\Car;
 
 use App\Http\Resources\Api\Mobile\V1\CarResource;
 use App\Models\Car;
-use App\Models\Service;
 use App\Services\Api\Mobile\V1\CarServiceContract;
 
 use App\Support\Response\Response;
 use Illuminate\Http\Request;
 
-class ServiceService implements CarServiceContract
+class CarService implements CarServiceContract
 {
     protected $response;
 
@@ -21,6 +20,8 @@ class ServiceService implements CarServiceContract
 
     public function searchByParams(Request $request)
     {
+        $take = 50;
+
         $rows = Car::active();
 
         if ($request->filled('brand')) {
@@ -42,9 +43,16 @@ class ServiceService implements CarServiceContract
                 ->where('year_end', '<=', $year);
         }
 
-        $rows = $rows->paginate(50);
+        $rows = $rows->paginate($take);
+
+        $meta = [
+            'take' => $take,
+            'page' => $rows->currentPage(),
+            'total' => $rows->total(),
+            'page_count' => $rows->lastPage(),
+        ];
 
         return $this->response->setCode(200)->setStatus(true)
-            ->setData(CarResource::collection($rows))->respond();
+            ->setData(CarResource::collection($rows))->setMeta($meta)->respond();
     }
 }

@@ -24,4 +24,17 @@ class Car extends Base
     {
         return $query->where('status', true);
     }
+
+    public function getYearAttribute()
+    {
+        if ($this->year_start == $this->year_end) {
+            return $this->year_start;
+        }
+
+        if ($this->year_end > date('Y')) {
+            return "{$this->year_start} - Present";
+        }
+
+        return "{$this->year_start} - {$this->year_end}";
+    }
 }

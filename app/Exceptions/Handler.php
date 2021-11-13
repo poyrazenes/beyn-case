@@ -64,7 +64,7 @@ class Handler extends ExceptionHandler
                 $response->setCode(500)->setMessage('An Error Occur');
             }
 
-            return $response->setStatus(false)->respond();
+            return $response->setStatus(false)->setData($exception)->respond();
         }
 
         return parent::render($request, $exception);
