@@ -2,11 +2,14 @@
 
 namespace App\Services\Api\Mobile\V1\Car;
 
-use App\Http\Resources\Api\Mobile\V1\CarResource;
-use App\Models\Car;
 use App\Services\Api\Mobile\V1\CarServiceContract;
+use App\Http\Resources\Api\Mobile\V1\CarResource;
+
+use App\Models\Car;
 
 use App\Support\Response\Response;
+
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class CarService implements CarServiceContract
@@ -18,7 +21,7 @@ class CarService implements CarServiceContract
         $this->response = new Response();
     }
 
-    public function searchByParams(Request $request)
+    public function searchByParams(Request $request): JsonResponse
     {
         $take = 50;
 

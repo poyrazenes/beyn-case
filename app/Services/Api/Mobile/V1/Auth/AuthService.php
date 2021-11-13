@@ -5,6 +5,7 @@ namespace App\Services\Api\Mobile\V1\Auth;
 use App\Services\Api\Mobile\V1\AuthServiceContract;
 
 use App\Support\Response\Response;
+use Illuminate\Http\JsonResponse;
 
 class AuthService implements AuthServiceContract
 {
@@ -15,7 +16,7 @@ class AuthService implements AuthServiceContract
         $this->response = new Response();
     }
 
-    public function login($credentials)
+    public function login(array $credentials): JsonResponse
     {
         if (!$token = auth('api')->attempt($credentials)) {
             return $this->response->setCode(401)->setStatus(false)

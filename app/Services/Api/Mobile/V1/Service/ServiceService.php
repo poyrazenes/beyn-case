@@ -2,12 +2,13 @@
 
 namespace App\Services\Api\Mobile\V1\Service;
 
-use App\Http\Resources\Api\Mobile\V1\ServiceResource;
-use App\Models\Service;
 use App\Services\Api\Mobile\V1\ServiceServiceContract;
+use App\Http\Resources\Api\Mobile\V1\ServiceResource;
 
-use App\Http\Resources\Api\Mobile\V1\ProfileResource;
+use App\Models\Service;
+
 use App\Support\Response\Response;
+use Illuminate\Http\JsonResponse;
 
 class ServiceService implements ServiceServiceContract
 {
@@ -18,7 +19,7 @@ class ServiceService implements ServiceServiceContract
         $this->response = new Response();
     }
 
-    public function getAllServices()
+    public function getAllServices(): JsonResponse
     {
         $rows = Service::active()->get();
 
