@@ -19,7 +19,8 @@ class CreateCarsTable extends Migration
             $table->string('url')->nullable();
             $table->string('brand')->nullable();
             $table->string('model')->nullable();
-            $table->string('year')->nullable();
+            $table->integer('year_start')->nullable();
+            $table->integer('year_end')->nullable();
             $table->string('option')->nullable();
             $table->string('engine_cylinders')->nullable();
             $table->string('engine_displacement')->nullable();

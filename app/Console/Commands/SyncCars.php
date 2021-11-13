@@ -50,16 +50,51 @@ class SyncCars extends Command
 
         if (!empty($car_list)) {
             foreach ($car_list as $params) {
-                $remote_id = $params['id'];
+                try {
+                    $remote_id = $params['id'];
+                    $years = $this->calculateYears($params['year']);
 
-                unset($params['id']);
+                    unset($params['id']);
+                    unset($params['year']);
 
-                Car::updateOrCreate([
-                    'remote_id' => $remote_id,
-                ], $params);
+                    $params['year_start'] = $years['start'];
+                    $params['year_end'] = $years['end'];
 
-                $this->info("Car updated or created {$remote_id}");
+                    Car::updateOrCreate([
+                        'remote_id' => $remote_id,
+                    ], $params);
+
+                    $this->info("Car updated or created {$remote_id}");
+                } catch (\Throwable $exception) {
+                }
             }
         }
+    }
+
+    private function calculateYears($year_interval)
+    {
+        $years = [
+            'start' => 0,
+            'end' => 0,
+        ];
+
+        if (strpos($year_interval, '-') !== false) {
+            $exploded = explode(' - ', $year_interval);
+
+            $years['start'] = (int) ($exploded[0] ?? 0);
+
+            if (isset($exploded[1])) {
+                if ($exploded[1] == 'Present') {
+                    $years['end'] = 2150;
+                } else {
+                    $years['end'] = (int)$exploded[1];
+                }
+            }
+        } else {
+            $years['start'] = (int)$year_interval;
+            $years['end'] = (int)$year_interval;
+        }
+
+        return $years;
     }
 }
