@@ -8,10 +8,7 @@ class Account extends Base
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'balance'
-    ];
+    protected $fillable = ['user_id', 'balance'];
 
     protected $casts = [];
 

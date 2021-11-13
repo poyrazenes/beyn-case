@@ -37,7 +37,7 @@ class InjectionServiceProvider extends ServiceProvider
     public function injectApiMobileV1Services()
     {
         $services = [
-            'Auth',
+            'Auth', 'User'
         ];
 
         foreach ($services as $service) {

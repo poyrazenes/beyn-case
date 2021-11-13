@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers\Api\Mobile\V1;
 
-use App\Http\Requests\Api\Mobile\V1\Auth\LoginRequest;
-use App\Http\Resources\Api\Mobile\V1\ProfileResource;
-use App\Services\Api\Mobile\V1\AuthServiceContract;
+use App\Http\Requests\Api\Mobile\V1\BalanceRequest;
+use App\Services\Api\Mobile\V1\UserServiceContract;
 
 class UserController extends BaseController
 {
-    protected $authService;
+    protected $userService;
 
-    public function __construct(AuthServiceContract $authService)
+    public function __construct(UserServiceContract $userService)
     {
-        $this->authService = $authService;
+        $this->userService = $userService;
 
         parent::__construct();
     }
 
     public function profile()
     {
-        return $this->response->setCode(200)->setStatus(true)
-            ->setData(new ProfileResource(auth('api')->user()))->respond();
+        return $this->userService->getProfile();
+    }
+
+    public function updateBalance(BalanceRequest $request)
+    {
+        return $this->userService->updateBalance(
+            $request->validated()
+        );
     }
 }

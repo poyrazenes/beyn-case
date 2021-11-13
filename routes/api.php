@@ -24,6 +24,7 @@ Route::name('api.')->namespace('Api')->group(function () {
         Route::middleware('check.api_auth')->group(function () {
             Route::prefix('/user')->group(function () {
                 Route::get('/profile', 'UserController@profile')->name('profile');
+                Route::post('/update-balance', 'UserController@updateBalance')->name('update-balance');
             });
         });
     });

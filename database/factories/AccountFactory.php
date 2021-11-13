@@ -4,16 +4,16 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use App\Models\User;
+use App\Models\Account;
 
-class UserFactory extends Factory
+class AccountFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Account::class;
 
     /**
      * Define the model's default state.
@@ -23,9 +23,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Enes Poyraz',
-            'email' => 'enes.poyraz@4alabs.io',
-            'password' => bcrypt('asd123')
+            'user_id' => 1,
+            'balance' => 0
         ];
     }
 }
