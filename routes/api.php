@@ -28,7 +28,7 @@ Route::name('api.')->namespace('Api')->group(function () {
             });
 
             Route::apiResource('services', 'ServiceController')->only(['index']);
-
+            Route::apiResource('cars', 'CarController')->only(['index']);
         });
     });
 });

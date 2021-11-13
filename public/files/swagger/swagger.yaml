@@ -121,6 +121,47 @@ paths:
           description: "Too Many Request"
           schema:
             "$ref": "#/definitions/ApiResponse"
+  /cars:
+    get:
+      tags:
+        - "car"
+      summary: "Fetch all cars"
+      description: ""
+      operationId: "service-index"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "brand"
+          in: "query"
+          description: "Car Brand"
+          required: false
+          type: "string"
+        - name: "model"
+          in: "query"
+          description: "Car Model"
+          required: false
+          type: "string"
+        - name: "year"
+          in: "query"
+          description: "Year"
+          required: false
+          type: "string"
+        - name: "page"
+          in: "query"
+          description: "Page"
+          required: false
+          type: "integer"
+      security:
+        - JWT: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+        "429":
+          description: "Too Many Request"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
 definitions:
   ApiResponse:
     type: "object"
