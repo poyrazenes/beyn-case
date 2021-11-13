@@ -15,7 +15,7 @@ class InjectionServiceProvider extends ServiceProvider
     {
         // services...
         $this->injectApiMobileV1Services();
-        //$this->injectApiMobileV2Services();
+        $this->injectIntegrationServices();
         //$this->injectApiMobileV3Services();
 
         // repositories...
@@ -44,6 +44,20 @@ class InjectionServiceProvider extends ServiceProvider
             $this->app->singleton(
                 "App\Services\Api\Mobile\V1\\{$service}ServiceContract",
                 "App\Services\Api\Mobile\V1\\{$service}\\{$service}Service",
+            );
+        }
+    }
+
+    public function injectIntegrationServices()
+    {
+        $services = [
+            'Car'
+        ];
+
+        foreach ($services as $service) {
+            $this->app->singleton(
+                "App\Services\Integration\\{$service}ServiceContract",
+                "App\Services\Integration\\{$service}\\{$service}Service",
             );
         }
     }

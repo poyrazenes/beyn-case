@@ -23,8 +23,8 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'Enes Poyraz',
-            'email' => 'enes.poyraz@4alabs.io',
+            'name' => 'Beyn Technologies',
+            'email' => 'beyntest@beyn.com',
             'password' => bcrypt('asd123')
         ];
     }
