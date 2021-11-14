@@ -20,7 +20,7 @@ class OrderRepository implements OrderRepositoryContract
 
     public function listOrders(Request $request)
     {
-        $rows = Order::filterUser();
+        $rows = Order::with(['car', 'service'])->filterUser();
 
         if ($request->filled('service_id')) {
             $rows->where(
