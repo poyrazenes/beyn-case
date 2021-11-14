@@ -52,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function balanceCheck($service_id)
     {
-        $service = Service::where('service_id', $service_id)->first();
+        $service = Service::where('id', $service_id)->first();
 
         return $service->price > $this->account->balance;
     }
