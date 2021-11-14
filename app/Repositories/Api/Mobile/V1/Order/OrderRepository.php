@@ -50,6 +50,6 @@ class OrderRepository implements OrderRepositoryContract
 
         */
 
-        return $rows->get();
+        return $rows->paginate(50);
     }
 }

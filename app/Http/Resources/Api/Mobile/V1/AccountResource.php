@@ -17,8 +17,8 @@ class AccountResource extends JsonResource
         return [
             'id' => $this->id,
             'balance' => $this->balance,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->created_at->toDateTimeString(),
+            'updated_at' => $this->updated_at->toDateTimeString(),
         ];
     }
 }

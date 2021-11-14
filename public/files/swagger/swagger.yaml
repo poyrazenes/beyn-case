@@ -186,6 +186,11 @@ paths:
           description: "Service id"
           required: false
           type: "integer"
+        - name: "page"
+          in: "query"
+          description: "Page"
+          required: false
+          type: "integer"
       security:
         - JWT: []
       responses:

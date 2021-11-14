@@ -41,7 +41,14 @@ class OrderService implements OrderServiceContract
     {
         $rows = $this->orderRepository->listOrders($request);
 
+        $meta = [
+            'take' => 50,
+            'page' => $rows->currentPage(),
+            'total' => $rows->total(),
+            'page_count' => $rows->lastPage(),
+        ];
+
         return $this->response->setCode(201)->setStatus(true)
-            ->setData(OrderResource::collection($rows))->respond();
+            ->setData(OrderResource::collection($rows))->setMeta($meta)->respond();
     }
 }
