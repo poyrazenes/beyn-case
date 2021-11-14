@@ -24,7 +24,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => 'Beyn Technologies',
-            'email' => 'beyntest@beyn.com',
+            'email' => 'beyn@beyn.com',
             'password' => bcrypt('asd123')
         ];
     }
