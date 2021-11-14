@@ -1,5 +1,6 @@
 ## Start
 
+- Run `composer update` command to install or update latest version of dependencies.
 - Run `php artisan migrate:fresh --seed` command to initialize the database.
 - Run `php artisan sync:cars` command to fetch and insert car list to our database.
 - Run `php artisan serve` command to run the application.
