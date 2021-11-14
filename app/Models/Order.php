@@ -2,9 +2,31 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Order extends Base
 {
-    protected $fillable = [];
+    use SoftDeletes;
+
+    protected $fillable = [
+        'user_id', 'service_id',
+        'car_id', 'price'
+    ];
 
     protected $casts = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function car()
+    {
+        return $this->belongsTo(Car::class);
+    }
 }

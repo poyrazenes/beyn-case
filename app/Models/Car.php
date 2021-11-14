@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Car extends Base
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'remote_id', 'url', 'brand', 'model', 'year_start', 'year_end',
         'option', 'engine_cylinders', 'engine_displacement', 'engine_power',
@@ -19,6 +23,11 @@ class Car extends Base
     protected $casts = [
         'status' => 'boolean'
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
     public function scopeActive($query)
     {

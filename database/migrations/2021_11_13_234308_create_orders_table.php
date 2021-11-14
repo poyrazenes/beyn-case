@@ -21,6 +21,15 @@ class CreateOrdersTable extends Migration
             $table->decimal('price');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')
+                ->on('users')->cascadeOnDelete();
+
+            $table->foreign('service_id')->references('id')
+                ->on('services')->cascadeOnDelete();
+
+            $table->foreign('car_id')->references('id')
+                ->on('cars')->cascadeOnDelete();
         });
     }
 
