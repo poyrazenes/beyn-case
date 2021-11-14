@@ -21,7 +21,9 @@ class ServiceService implements ServiceServiceContract
 
     public function getAllServices(): JsonResponse
     {
-        $rows = Service::active()->get();
+        $rows = cache()->remember('all_services', '3600', function () {
+            return Service::active()->get();
+        });
 
         return $this->response->setCode(200)->setStatus(true)
             ->setData(ServiceResource::collection($rows))->respond();

@@ -49,4 +49,11 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Order::class);
     }
+
+    public function balanceCheck($service_id)
+    {
+        $service = Service::where('service_id', $service_id)->first();
+
+        return $service->price > $this->account->balance;
+    }
 }

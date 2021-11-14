@@ -24,6 +24,11 @@ class OrderService implements OrderServiceContract
 
     public function create(array $params): JsonResponse
     {
+        if (api_user()->balanceCheck($params['service_id'])) {
+            return $this->response->setCode(400)->setStatus(false)
+                ->setMessage('Balance is not enough for this service!')->respond();
+        }
+
         $params['user_id'] = api_user()->id;
 
         $this->orderRepository->createOrder($params);
