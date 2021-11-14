@@ -17,6 +17,10 @@ tags:
     description: "User operations"
   - name: "service"
     description: "Service operations"
+  - name: "car"
+    description: "Car operations"
+  - name: "order"
+    description: "Order operations"
 schemes:
   - "http"
 paths:
@@ -160,6 +164,67 @@ paths:
             "$ref": "#/definitions/ApiResponse"
         "429":
           description: "Too Many Request"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+  /orders:
+    get:
+      tags:
+        - "order"
+      summary: "Fetch all orders"
+      description: ""
+      operationId: "order-index"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "car_id"
+          in: "query"
+          description: "Car id"
+          required: false
+          type: "integer"
+        - name: "service_id"
+          in: "query"
+          description: "Service id"
+          required: false
+          type: "integer"
+      security:
+        - JWT: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+        "422":
+          description: "Unprocessable Entity"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+    post:
+      tags:
+        - "order"
+      summary: "Store new order"
+      description: ""
+      operationId: "order-store"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "car_id"
+          in: "formData"
+          description: "Car id"
+          required: true
+          type: "integer"
+        - name: "service_id"
+          in: "formData"
+          description: "Service id"
+          required: true
+          type: "integer"
+      security:
+        - JWT: []
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            "$ref": "#/definitions/ApiResponse"
+        "422":
+          description: "Unprocessable Entity"
           schema:
             "$ref": "#/definitions/ApiResponse"
 definitions:

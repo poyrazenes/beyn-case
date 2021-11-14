@@ -29,4 +29,9 @@ class Order extends Base
     {
         return $this->belongsTo(Car::class);
     }
+
+    public function scopeUser($query)
+    {
+        return $query->where('user_id', api_user()->id);
+    }
 }

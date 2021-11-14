@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('service_id');
             $table->foreignId('car_id');
-            $table->decimal('price');
+            $table->decimal('price')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
